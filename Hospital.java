@@ -68,4 +68,24 @@ public class Hospital {
         System.out.println("Remisión: " + (remision * 100.0 / total) + "%");
         System.out.println("Fallecido: " + (fallecido * 100.0 / total) + "%");
     }
+
+    
+    public Paciente buscarPaciente(int id) {
+        for (Paciente p : listaPacientes) {
+            if (p.getId() == id) {
+                return p;
+            }
+        }
+        return null;
+    }
+
+    public void mostrarPaciente(int id) {
+        Paciente p = buscarPaciente(id);
+
+        if (p != null) {
+            System.out.println(p);
+        } else {
+            System.out.println("Paciente no encontrado");
+        }
+    }
 }
