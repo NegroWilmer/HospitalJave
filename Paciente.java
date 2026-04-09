@@ -44,6 +44,10 @@ public class Paciente {
         return estado;
     }
 
+    public int getId() {
+        return id;
+    }
+
     @Override
     public String toString() {
         return "Paciente [id=" + id + ", nombre=" + nombre + ", tipoCancer=" + tipoCancer + ", estado=" + estado + "]";
