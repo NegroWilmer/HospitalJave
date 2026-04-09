@@ -42,5 +42,8 @@ public class Main {
 
         System.out.println("\n=== PORCENTAJE POR ESTADO ===");
         hospital.porcentajePorEstado();
+        
+        System.out.println("\n=== BUSCAR PACIENTE ===");
+        hospital.mostrarPaciente(1);
     }
 }
