@@ -1,0 +1,69 @@
+@startuml
+
+class Hospital {
+    + {static} main(args: String[]): void
+}
+
+class Sistema {
+    - listaPacientes: List<Paciente>
+    + Sistema()
+    + agregarPaciente(paciente: Paciente): void
+    + agregarExamen(paciente: Paciente, examen: Examen): void
+    + agregarTratamiento(paciente: Paciente, tratamiento: Tratamiento): void
+    + contarPacientesPorTipoCancer(): void
+    + porcentajePorEstado(): void
+    + buscarPaciente(id: int): Paciente
+    + mostrarPaciente(id: int): void
+}
+
+class Paciente {
+    - id: int
+    - nombre: String
+    - edad: int
+    - genero: String
+    - tipoCancer: String
+    - etapa: String
+    - estado: String
+    - listaExamenes: List<Examen>
+    - listaTratamientos: List<Tratamiento>
+    + Paciente(id, nombre, edad, genero, tipo, etapa, estado)
+    + agregarExamen(examen: Examen): void
+    + agregarTratamiento(tratamiento: Tratamiento): void
+    + getTipoCancer(): String
+    + getEstado(): String
+    + getId(): int
+    + toString(): String
+}
+
+class Examen {
+    - id: int
+    - fecha: LocalDate
+    - tipo: String
+    - resultado: String
+    + Examen(id, fecha, tipo, resultado)
+    + toString(): String
+}
+
+class Tratamiento {
+    - id: int
+    - nombre: String
+    - duracionDias: int
+    - efectosSecundarios: String
+    + Tratamiento(id, nombre, duracion, efectos)
+    + calcularEficacia(tipoCancer: String): double
+    + toString(): String
+}
+
+' --- RELACIONES ---
+
+' Composición 1 a 1
+Hospital "1" *-- "1" Sistema : posee >
+
+' Agregación 1 a Muchos (Rombo hacia el Hospital)
+Hospital "1" o-- "1..*" Paciente : registra >
+
+' Agregación 1 a Muchos (Rombo hacia el Paciente)
+Paciente "1" o-- "1..*" Examen : realiza >
+Paciente "1" o-- "1..*" Tratamiento : recibe >
+
+@enduml
