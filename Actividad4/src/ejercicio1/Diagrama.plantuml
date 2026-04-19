@@ -56,13 +56,13 @@ class Tratamiento {
 
 ' --- RELACIONES ---
 
-' Composición 1 a 1
-Hospital "1" *-- "1" Sistema : posee >
+' Agregacion 1 a 1
+Hospital "1" o-- "1" Sistema : utliza >
 
-' Agregación 1 a Muchos (Rombo hacia el Hospital)
+' Agregación 1 a Muchos 
 Hospital "1" o-- "1..*" Paciente : registra >
 
-' Agregación 1 a Muchos (Rombo hacia el Paciente)
+' Agregación 1 a Muchos 
 Paciente "1" o-- "1..*" Examen : realiza >
 Paciente "1" o-- "1..*" Tratamiento : recibe >
 
